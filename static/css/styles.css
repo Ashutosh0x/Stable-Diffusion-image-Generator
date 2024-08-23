@@ -1,0 +1,171 @@
+/* Import Google Fonts */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    overflow: hidden; /* Prevent scrollbars due to particles effect */
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    max-width: 600px; /* Adjusted max-width for better layout */
+    width: 100%;
+    text-align: center;
+    position: relative; /* Ensure container is above particles effect */
+    z-index: 1; /* Ensure container is above particles effect */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #007BFF;
+}
+
+#tsparticles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1; /* Ensure tsparticles is behind the content */
+}
+
+input[type="text"] {
+    padding: 14px 20px;
+    width: calc(100% - 130px);
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.25);
+}
+
+button {
+    padding: 14px 25px;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 5px 20px rgba(0, 91, 187, 0.4);
+}
+
+button:focus {
+    outline: none;
+}
+
+#imagesContainer {
+    margin-top: 30px;
+    display: grid; /* Changed to grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Two images per row */
+    gap: 20px; /* Space between images */
+    justify-items: center; /* Center images horizontally */
+    align-items: center; /* Center images vertically */
+}
+
+#imagesContainer img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#imagesContainer img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading indicator styles */
+#loadingIndicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007BFF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none; /* Initially hidden */
+    z-index: 2; /* Ensure it's above other content */
+}
+
+/* Show loading indicator */
+#loadingIndicator.active {
+    display: block;
+}
+
+/* Spin animation for loading indicator */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Background overlay for loading transition */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: none; /* Initially hidden */
+    z-index: 1; /* Ensure it's behind the loading indicator but above other content */
+}
+
+/* Show overlay during loading */
+#loadingOverlay.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 100px);
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    #imagesContainer {
+        grid-template-columns: 1fr; /* Stack images on smaller screens */
+    }
+}
